@@ -51,6 +51,7 @@ public class Solution {
 
 //Priority Queue Implementation
 //Time Complexity : O(n) + O(log(n))
+//Space Complexity: O(n) + O(n)
 public class Solution {
     public int[] TopKFrequent(int[] nums, int k)
     {
@@ -74,6 +75,5 @@ public class Solution {
             arr[--k1] = pq.Dequeue();
         }
         return arr;
-
     }
 }
