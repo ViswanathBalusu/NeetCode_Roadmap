@@ -1,0 +1,40 @@
+//Link: https://leetcode.com/problems/encode-and-decode-strings/
+
+//AltLink: https://neetcode.io/problems/string-encode-and-decode
+
+public class Solution {
+
+    public string Encode(IList<string> strs)
+    {
+        var strBuilder = new StringBuilder();
+        foreach (string s in strs)
+        {
+            string b64Str = Convert.ToBase64String(Encoding.UTF8.GetBytes(s));
+            strBuilder.Append($"{b64Str.Length.ToString()}#{b64Str}");
+        }
+        return strBuilder.ToString();
+    }
+
+    public List<string> Decode(string s)
+    {
+        var decodedString = new List<string>();
+        int i = 0;
+        int j = 0;
+        while (i < s.Length)
+        {
+            
+            if (s[j] != '#')
+            {
+                j++;
+                continue;
+            }
+            int wordSize = Int32.Parse(s.Substring(i, j-i));
+            string word = Encoding.UTF8.GetString(Convert.FromBase64String(s.Substring(j + 1, wordSize)));
+            decodedString.Add(word);
+            i = j + wordSize + 1;
+            j = i;
+        }
+        return decodedString;
+    }
+}
+
