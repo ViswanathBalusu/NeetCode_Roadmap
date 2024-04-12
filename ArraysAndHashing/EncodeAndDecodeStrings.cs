@@ -9,6 +9,8 @@ public class Solution {
         var strBuilder = new StringBuilder();
         foreach (string s in strs)
         {
+            // base64 conversion to make sure the input words dont have '#' and also induce more randomness into the encoded string
+            // Base64 encoded strings only have (A–Z, a–z), the numerals (0–9), and the "+", "=" and "/" symbols.
             string b64Str = Convert.ToBase64String(Encoding.UTF8.GetBytes(s));
             strBuilder.Append($"{b64Str.Length.ToString()}#{b64Str}");
         }
