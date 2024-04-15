@@ -46,7 +46,7 @@ public class MinStack {
     }
     
     public void Pop() {
-        this.lst.RemoveAt(lst.Count - 1); // Counts Updated Here
+        this.lst.RemoveAt(lst.Count - 1); // Count is Updated Here
         this.lst.RemoveAt(lst.Count - 1); // Again remove the last element
     }
     
