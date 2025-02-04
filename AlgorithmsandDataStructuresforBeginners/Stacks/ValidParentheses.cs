@@ -1,4 +1,5 @@
 ﻿//Link: https://leetcode.com/problems/valid-parentheses/submissions/1529327942/
+//Link 2: https://leetcode.com/problems/valid-parentheses/submissions/1530428200/
 
 namespace LeetCodeHunt.AlgorithmsandDataStructuresforBeginners.Stacks
 {
@@ -29,6 +30,43 @@ namespace LeetCodeHunt.AlgorithmsandDataStructuresforBeginners.Stacks
 
             }
             return stk.Count == 0;
+        }
+    }
+
+    public class SolutionValidParentheses2
+    {
+        public bool IsValid(string s)
+        {
+            var top = -1;
+
+            var stk = new char[s.Length];
+
+            foreach (var c in s) {
+                if (c == '{' || c == '[' || c == '(')
+                {
+                    stk[++top] = c;
+                    continue;
+                }
+
+                if (top == -1)
+                {
+                    return false;
+                }
+
+                var peek = stk[top];
+                if ((c == '}' && peek == '{') ||
+                    (c == ']' && peek == '[') ||
+                    (c == ')' && peek == '('))
+                {
+                    top--;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            return top == -1;
         }
     }
 }
