@@ -55,6 +55,7 @@ namespace LeetCodeHunt.AlgorithmsandDataStructuresforBeginners.LinkedLists
                 newHead = ReverseList(head.next);
                 head.next.next = head;
             }
+
             head.next = null;
 
             return newHead;
